@@ -28,9 +28,7 @@ async def start_handler(_, event: Message):
 	await event.reply_photo("https://graph.org/file/bc64d49095ab1763cb531.jpg",
                                 caption=Config.START_MSG.format(event.from_user.mention),
                                 reply_markup=InlineKeyboardMarkup([
-					[InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")],
-					[InlineKeyboardButton("❤ Donation Link ❤", callback_data="Help_msg"),
-                                        InlineKeyboardButton("♻ About ♻", callback_data="About_msg")]
+					[InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")]
 				]))
 
 @Bot.on_message(filters.private & filters.command("help"))
@@ -38,9 +36,24 @@ async def help_handler(_, event: Message):
 
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
-		[InlineKeyboardButton('❤ Donation Link ❤', url='https://upier.vercel.app/pay/tgnvs@axisbank')
-	 ],[InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink"), 
-             InlineKeyboardButton("♻ 𝙰𝚋𝚘𝚞𝚝 ♻", callback_data="About_msg")]
+	[
+		InlineKeyboardButton('❤ Donation Link ❤', url='https://upier.vercel.app/pay/tgnvs@axisbank')
+	 ],[
+		InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
+	]
+        ])
+    )
+
+@Bot.on_message(filters.private & filters.command("about"))
+async def help_handler(_, event: Message):
+
+    await event.reply_text(Config.ABOUT_BOT_TEXT.format(event.from_user.mention),
+        reply_markup=InlineKeyboardMarkup([
+		[
+			InlineKeyboardButton('❤ Donation Link ❤', url='https://upier.vercel.app/pay/tgnvs@axisbank')
+	 ],[
+			InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
+		]
         ])
     )
 
@@ -63,7 +76,7 @@ async def inline_handlers(_, event: Message):
         reply_markup=InlineKeyboardMarkup(
     [
 	[
-	    InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
+	    InlineKeyboardButton("🎬   𝙼𝚘𝚟𝚒𝚎 Link   🎬", url="https://t.me/tg_movielink")
 	]
     ]
      )
@@ -86,10 +99,6 @@ async def button(bot, cmd: CallbackQuery):
 				[
 					[
 						InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
-					],
-					[
-						InlineKeyboardButton("❤ Donation Link ❤", callback_data="Help_msg"),
-						InlineKeyboardButton("💠 Home 💠", callback_data="gohome")
 					]
 				]
 			),
@@ -103,10 +112,6 @@ async def button(bot, cmd: CallbackQuery):
 				[
 					[
 					InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
-					], 
-                                        [
-					InlineKeyboardButton("💠 Home 💠", callback_data="gohome"),
-					InlineKeyboardButton("♻ About ♻", callback_data="About_msg")
 					]
 				]
 			),
@@ -120,10 +125,6 @@ async def button(bot, cmd: CallbackQuery):
 				[
 					[
 					InlineKeyboardButton("🎬 𝙼𝚘𝚟𝚒𝚎 Link 🎬", url="https://t.me/tg_movielink")
-					],
-					[
-					InlineKeyboardButton("❤ Donation Link ❤", callback_data="Help_msg"),
-					InlineKeyboardButton("♻ About ♻", callback_data="About_msg")
 					]
 				]
 			),
